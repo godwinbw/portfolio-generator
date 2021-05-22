@@ -147,12 +147,16 @@ promptUser()
   .then((portfolioData) => {
     const pageHTML = generatePage(portfolioData);
 
-    fs.writeFile("./index.html", pageHTML)
-      .then(() =>
-        console.log(
-          "Page created! Check out index.html in this directory to see it!"
-        )
-      )
+    fs.writeFile("./dist/index.html", pageHTML)
+      .then(() => {
+        console.log("index.html created");
+
+        fs.copyFile("./src/style.css", "./dist/style.css")
+          .then(() => console.log("style sheet copied successfully"))
+          .catch((err) => {
+            console.log(err);
+          });
+      })
       .catch((err) => {
         console.log(err);
       });
