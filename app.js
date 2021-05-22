@@ -1,3 +1,17 @@
+const inquirer = require("inquirer");
+
+inquirer
+  .prompt([
+    {
+      type: "input",
+      name: "name",
+      message: "What is your name?",
+    },
+  ])
+  .then((answers) => console.log(answers));
+
+/*
+
 const fs = require("fs").promises;
 const generatePage = require("./src/page-template.js");
 
@@ -13,3 +27,5 @@ fs.writeFile("index.html", generatePage(name, github))
     console.log("we had an error");
     console.log(err);
   });
+
+*/
